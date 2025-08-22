@@ -19,7 +19,7 @@ describe('Funcionalidade: Usuários', () => {
     })
   })
 
-  it('CT01: GET/Usuarios - Deve listar todos os usuários cadastrados', async () => {
+  it('CT01: GET/usuarios - Deve listar todos os usuários cadastrados', async () => {
     const res = await spec()
       .get('/usuarios')
       .expectStatus(200)
@@ -28,7 +28,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res.body, userListSuccessSchema)
   })
 
-  it('CT02: POST/Usuarios - Deve cadastrar usuário com sucesso', async () => {
+  it('CT02: POST/usuarios - Deve cadastrar usuário com sucesso', async () => {
     const payload = userValid()
 
     const res = await spec()
@@ -40,7 +40,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res.body, userCreateSuccessSchema)
   })
 
-  it('CT03: POST/Usuarios - Não deve permitir e-mail duplicado', async () => {
+  it('CT03: POST/usuarios - Não deve permitir e-mail duplicado', async () => {
     const payload = userValid()
 
     const res1 = await spec()
@@ -60,7 +60,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res2.body, userDuplicateEmailErrorSchema)
   })
 
-  it('CT04: GET/Usuarios/{id} - Deve retornar usuário por ID', async () => {
+  it('CT04: GET/usuarios/{id} - Deve retornar usuário por ID', async () => {
     const novoUsuario = userValid()
 
     const resCreate = await spec()
@@ -79,7 +79,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res.body, userGetByIdSuccessSchema)
   })
 
-  it('CT05: DELETE/Usuarios/{id} - Deve excluir usuário por ID', async () => {
+  it('CT05: DELETE/usuarios/{id} - Deve excluir usuário por ID', async () => {
     const created = await spec()
       .post('/usuarios')
       .withJson({
@@ -101,7 +101,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res.body, userDeleteSuccessSchema)
   })
 
-  it('CT06: PUT/Usuarios/{id} - Deve atualizar usuário com sucesso', async () => {
+  it('CT06: PUT/usuarios/{id} - Deve atualizar usuário com sucesso', async () => {
     const resCreate = await spec()
       .post('/usuarios')
       .withJson(userValid())
@@ -126,7 +126,7 @@ describe('Funcionalidade: Usuários', () => {
     Joi.assert(res.body, userUpdateSuccessSchema)
   })
 
-  it('CT07: PUT/Usuarios/{id} - Não deve aceitar e-mail já cadastrado', async () => {
+  it('CT07: PUT/usuarios/{id} - Não deve aceitar e-mail já cadastrado', async () => {
     const payloadA = userValid()
     const createA = await spec()
       .post('/usuarios')

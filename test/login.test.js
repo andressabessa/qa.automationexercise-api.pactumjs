@@ -11,7 +11,7 @@ describe('Funcionalidade: Login', () => {
     })
   })
 
-  it('CT01: POST/Login - Deve realizar login com credenciais válidas', async () => {
+  it('CT01: POST/login - Deve realizar login com credenciais válidas', async () => {
     const body = { email: 'fulano@qa.com', password: 'teste' }
 
     const res = await spec()
@@ -23,7 +23,7 @@ describe('Funcionalidade: Login', () => {
     Joi.assert(res.body, loginSuccessSchema)
   })
 
-  it('CT02: POST/Login - Não deve realizar login com credenciais inválidas', async () => {
+  it('CT02: POST/login - Não deve realizar login com credenciais inválidas', async () => {
     const body = { email: 'fulano@qa.com', password: 'senhaErrada' }
 
     const res = await spec()
