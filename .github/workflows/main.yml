@@ -1,0 +1,27 @@
+name: Testes de API-CI
+on:
+  workflow_dispatch:
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: 'http://localhost:3000'
+      
+      
+    steps:
+        - name: Checkout do repositório
+          uses: actions/checkout@v4
+
+        - name: Instalar dependências
+          run: npm install
+
+        - name: Test e Report
+          run: npm test
+
+        - name: Upload Reports
+          uses: actions/upload-artifact@v4
+          with:
+            name: mochawesome-report
+            path: mochawesome-report/
