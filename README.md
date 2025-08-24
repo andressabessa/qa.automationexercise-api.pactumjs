@@ -49,15 +49,8 @@ O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.
 
 ```bash
 # URL base da API ServeRest
-BASE_URL=https://serverest.dev
-
-# Ambiente de execução (opcional)
-NODE_ENV=development
+BASE_URL=http://localhost:3000
 ```
-
-**Importante:** O arquivo `.env` não deve ser commitado no repositório (já está no .gitignore). 
-
-
 
 ## Estrutura de pastas
 
@@ -105,9 +98,6 @@ npx mocha ./test/product.test.js --reporter mochawesome
 
 # Executar apenas testes de usuários
 npx mocha ./test/user.test.js --reporter mochawesome
-
-# Executar testes com padrão específico
-npx mocha ./test/*.test.js --grep "login" --reporter mochawesome
 ```
 
 ## Relatórios
@@ -154,6 +144,11 @@ mochawesome-report/
 **Para visualizar o relatório:**
 1. Execute os testes: `npm test` ou `npm run test:ci`
 2. Abra o arquivo `mochawesome-report/mochawesome.html` no seu navegador
+   
+   > Exemplo do relatório:
+
+<img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
+
 
 ## CI/CD
 
@@ -168,11 +163,6 @@ O projeto inclui um workflow do GitHub Actions configurado em `.github/workflows
 1. Vá para a aba "Actions" no GitHub
 2. Selecione "Testes de API-CI"
 3. Clique em "Run workflow"
-
-> Exemplo do relatório:
-
-<img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
-
 
 
 ### Contato
