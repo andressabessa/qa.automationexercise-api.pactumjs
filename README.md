@@ -23,6 +23,8 @@ Este projeto implementa testes automatizados para a API pública [ServeRest](htt
 
 ## Pré-requisitos
 
+Antes de começar, certifique-se de ter instalado:
+
 - [Node.js](https://nodejs.org/) versão 14 ou superior
 - [npm](https://www.npmjs.com/) (normalmente já incluso com o Node.js)
 
@@ -39,19 +41,6 @@ Este projeto implementa testes automatizados para a API pública [ServeRest](htt
    ```bash
    npm install
    ```
-
-3. **Execute os testes de API e contrato:**
-   ```bash
-   npm test
-   ```
-   
-   Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
-   
-   **Importante:** Após a execução dos testes, abra o relatório HTML gerado em `mochawesome-report/mochawesome.html`. 
-
-> Exemplo:
-
-<img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
 
 
 ## Configurações necessárias
@@ -79,6 +68,26 @@ O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.
 │   └── user.test.js
 └── .env                 # Configuração de variáveis de ambiente (criar manualmente)
 ```
+
+## Executando os testes
+
+### Executar todos os testes de API e contrato
+
+   ```bash
+   npm test
+   ```
+   
+   Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
+   
+   **Importante:** Após a execução dos testes, abra o relatório HTML gerado em `mochawesome-report/mochawesome.html`. 
+
+### Como gerar os relatórios
+
+> Exemplo:
+
+<img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
+
+
 
 
 ### Contato
