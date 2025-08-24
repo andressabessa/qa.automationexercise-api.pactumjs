@@ -45,7 +45,18 @@ Antes de começar, certifique-se de ter instalado:
 
 ## Configurações necessárias
 
-O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.env` na raiz do projeto com a variável da API ServeRest. 
+O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```bash
+# URL base da API ServeRest
+BASE_URL=https://serverest.dev
+
+# Ambiente de execução (opcional)
+NODE_ENV=development
+```
+
+**Importante:** O arquivo `.env` não deve ser commitado no repositório (já está no .gitignore). 
+
 
 
 ## Estrutura de pastas
@@ -73,7 +84,7 @@ Abaixo está um desenho exemplificando a estrutura básica do projeto:
 
 ## Executando os testes
 
-1. **Executar todos os testes:**
+### 1. Executar todos os testes
 
 ```bash
 npm test
@@ -81,7 +92,7 @@ npm test
 
 Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
 
-2. **Executar testes separados:**
+### 2. Executar testes separados
 
 Para executar testes específicos, você pode usar os seguintes comandos:
 
@@ -94,6 +105,9 @@ npx mocha ./test/product.test.js --reporter mochawesome
 
 # Executar apenas testes de usuários
 npx mocha ./test/user.test.js --reporter mochawesome
+
+# Executar testes com padrão específico
+npx mocha ./test/*.test.js --grep "login" --reporter mochawesome
 ```
 
 ## Relatórios
@@ -101,6 +115,19 @@ npx mocha ./test/user.test.js --reporter mochawesome
 ### Como gerar os relatórios
 
 Os relatórios são gerados automaticamente durante a execução dos testes usando o Mochawesome. O comando `npm test` já inclui a geração do relatório.
+
+### Scripts disponíveis
+
+```bash
+# Executar testes com relatório (desenvolvimento)
+npm test
+
+# Executar testes com relatório (CI/CD - com timeout aumentado)
+npm run test:ci
+
+# Gerar relatório consolidado (quando há múltiplos arquivos JSON)
+npm run report:generate
+```
 
 ### Informações do relatório
 
@@ -117,9 +144,30 @@ O relatório Mochawesome inclui:
 
 Os relatórios são gerados na pasta `mochawesome-report/` na raiz do projeto:
 
+```plaintext
+mochawesome-report/
+├── mochawesome.html          # Relatório principal (abrir no navegador)
+├── mochawesome.json          # Dados do relatório em JSON
+└── assets/                   # Recursos do relatório (CSS, JS, imagens)
+```
+
 **Para visualizar o relatório:**
-1. Execute os testes: `npm test`
+1. Execute os testes: `npm test` ou `npm run test:ci`
 2. Abra o arquivo `mochawesome-report/mochawesome.html` no seu navegador
+
+## CI/CD
+
+O projeto inclui um workflow do GitHub Actions configurado em `.github/workflows/main.yml` que:
+
+- Executa os testes automaticamente
+- Gera relatórios Mochawesome
+- Faz upload dos relatórios como artifacts
+- Retém os artifacts por 30 dias
+
+**Para executar o workflow:**
+1. Vá para a aba "Actions" no GitHub
+2. Selecione "Testes de API-CI"
+3. Clique em "Run workflow"
 
 > Exemplo do relatório:
 
