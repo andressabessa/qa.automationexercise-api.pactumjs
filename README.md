@@ -51,6 +51,9 @@ O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.
 
 ## Estrutura de pastas
 
+Abaixo está um desenho exemplificando a estrutura básica do projeto:
+
+
 ```plaintext
 .
 ├── data/                # Schemas Joi para validação de respostas
