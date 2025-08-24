@@ -9,6 +9,10 @@
 
 > Projeto de automação de testes de API utilizando PactumJs para a API pública [ServeRest](https://serverest.dev/).
 
+## Sobre o projeto
+
+Este projeto implementa testes automatizados para a API pública [ServeRest](https://serverest.dev/), uma plataforma utilizada para práticas de automação de testes. 
+
 
 ## Tecnologias utilizadas
 
