@@ -45,8 +45,7 @@ Antes de começar, certifique-se de ter instalado:
 
 ## Configurações necessárias
 
-O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.env` na raiz do projeto com a base url da API ServeRest. 
-
+O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.env` na raiz do projeto com a variável da API ServeRest. 
 
 
 ## Estrutura de pastas
@@ -74,22 +73,57 @@ Abaixo está um desenho exemplificando a estrutura básica do projeto:
 
 ## Executando os testes
 
-### Executar todos os testes de API e contrato
+1. **Executar todos os testes:**
 
-   ```bash
-   npm test
-   ```
-   
-   Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
-   
-   **Importante:** Após a execução dos testes, abra o relatório HTML gerado em `mochawesome-report/mochawesome.html`. 
+```bash
+npm test
+```
+
+Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
+
+2. **Executar testes separados:**
+
+Para executar testes específicos, você pode usar os seguintes comandos:
+
+```bash
+# Executar apenas testes de login
+npx mocha ./test/login.test.js --reporter mochawesome
+
+# Executar apenas testes de produtos
+npx mocha ./test/product.test.js --reporter mochawesome
+
+# Executar apenas testes de usuários
+npx mocha ./test/user.test.js --reporter mochawesome
+```
+
+## Relatórios
 
 ### Como gerar os relatórios
 
-> Exemplo:
+Os relatórios são gerados automaticamente durante a execução dos testes usando o Mochawesome. O comando `npm test` já inclui a geração do relatório.
+
+### Informações do relatório
+
+O relatório Mochawesome inclui:
+
+- **Resumo geral:** Total de testes, passou, falhou, pendente
+- **Detalhes por teste:** Status, duração, descrição
+- **Logs de erro:** Stack traces e mensagens de erro detalhadas
+- **Screenshots:** Capturas de tela (quando aplicável)
+- **Filtros:** Por status, duração, tags
+- **Exportação:** Opção de exportar para JSON, CSV, XML
+
+### Localização dos relatórios
+
+Os relatórios são gerados na pasta `mochawesome-report/` na raiz do projeto:
+
+**Para visualizar o relatório:**
+1. Execute os testes: `npm test`
+2. Abra o arquivo `mochawesome-report/mochawesome.html` no seu navegador
+
+> Exemplo do relatório:
 
 <img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
-
 
 
 
