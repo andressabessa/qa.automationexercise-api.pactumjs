@@ -23,7 +23,7 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Start ServeRest (local)
+      - name: Start ServeRest
         run: npx serverest@latest > serverest.log 2>&1 &
 
       - name: Aguardar API ficar disponível
@@ -31,22 +31,9 @@ jobs:
 
       - name: Test e Report
         run: npm run test:ci
-        env:
-          BASE_URL: http://localhost:3000
+        
 
-      - name: Verificar se os relatórios foram gerados
-        run: |
-          echo "=== Verificando arquivos gerados ==="
-          ls -la mochawesome-report/
-          echo "=== Conteúdo do JSON ==="
-          if [ -f mochawesome-report/mochawesome.json ]; then
-            cat mochawesome-report/mochawesome.json | head -20
-          else
-            echo "Arquivo mochawesome.json não encontrado!"
-            find . -name "*.json" -type f
-          fi
-
-      - name: Upload Reports (mochawesome)
+      - name: Upload relatórios
         if: always()
         uses: actions/upload-artifact@v4
         with:
