@@ -1,7 +1,13 @@
 # qa.automationexercise-api.pactumjs
 
-Este projeto automatiza testes da API pública [ServeRest](https://serverest.dev/), uma API REST gratuita que simula operações de e-commerce.O repositório contém uma suíte de testes em Node.js construída com PactumJS (requisições e asserts), Mocha (test runner), Joi (validação de contratos) e @faker-js/faker (massa de dados randômica). A estratégia de validação segue a heurística [VADER](https://qa-matters.com/2016/07/30/vader-a-rest-api-test-heuristic/) um mnemônico de Stuart Ashman que cobre cinco áreas críticas em testes de APIs REST: Verbs, Authorization, Data, Errors e Responsiveness — em outras palavras, validar os verbos HTTP, a autorização, os dados (entrada/saída), os erros e a responsividade. Sinta-se à vontade para explorar e expandir o projeto. Agradeço desde já o interesse e a colaboração!
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/)
+[![PactumJS](https://img.shields.io/badge/PactumJS-3.8.0-blue.svg)](https://pactumjs.github.io/)
+[![Mocha](https://img.shields.io/badge/Mocha-11.7.1-yellow.svg)](https://mochajs.org/)
+[![Joi](https://img.shields.io/badge/Joi-17.13.3-purple.svg)](https://joi.dev/)
+[![Mochawesome](https://img.shields.io/badge/Mochawesome-7.1.3-orange.svg)](https://www.npmjs.com/package/mochawesome)
+[![Faker](https://img.shields.io/badge/Faker-9.9.0-cyan.svg)](https://fakerjs.dev/)
 
+> Projeto de automação de testes de API utilizando PactumJs para a API pública [ServeRest](https://serverest.dev/).
 
 
 ## Tecnologias utilizadas
@@ -11,10 +17,11 @@ Este projeto automatiza testes da API pública [ServeRest](https://serverest.dev
 - **[mocha](https://mochajs.org/):** Framework de execução dos testes.
 - **[mochawesome](https://www.npmjs.com/package/mochawesome):** Gerador de relatórios dos testes.
 
-## Requisitos
+## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) versão 14 ou superior
 - [npm](https://www.npmjs.com/) (normalmente já incluso com o Node.js)
+
 
 ## Como instalar e executar o projeto 
 
@@ -33,14 +40,19 @@ Este projeto automatiza testes da API pública [ServeRest](https://serverest.dev
    ```bash
    npm test
    ```
-  Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
-  Importante: Após a execução dos testes, abra o relatório HTML gerado. 
+   
+   Isso irá rodar todos os arquivos de teste localizados em `./test/*.test.js` utilizando o Mocha e gerar o relatório com o Mochawesome.
+   
+   **Importante:** Após a execução dos testes, abra o relatório HTML gerado em `mochawesome-report/mochawesome.html`. 
 
-Exemplo:
+> Exemplo:
 
 <img width="938" height="280" alt="image" src="https://github.com/user-attachments/assets/0f883cc6-c6d0-4bf8-9071-bbe8599d0754" />
 
 
+## Configurações necessárias
+
+O projeto utiliza variáveis de ambiente para configuração. Crie um arquivo `.env` na raiz do projeto com a base url da API ServeRest. 
 
 
 
@@ -61,34 +73,11 @@ Exemplo:
 │   ├── login.test.js
 │   ├── product.test.js
 │   └── user.test.js
-└── .env.example         # Exemplo de configuração de variáveis de ambiente
+└── .env                 # Configuração de variáveis de ambiente (criar manualmente)
 ```
 
 
-## Exemplo — Fluxo dos Testes de Produtos
+### Contato
 
-- **CT01**: Listar produtos cadastrados (`GET /produtos`).
-- **CT02**: Cadastrar novos produtos (`POST /produtos`).
-- **CT03**: Obter produto por ID (`GET /produtos/{id}`).
-- **CT04**: Atualizar produto por ID (`PUT /produtos/{id}`).
-- **CT05**: Excluir produto por ID (`DELETE /produtos/{id}`).
-
-## Fixtures & Helpers
-
-- **`userValid`** (em userFixtures.js): Gera um usuário válido com dados randômicos.
-- **`generateProduct`** (em productFixtures.js): Gera um produto válido com dados randômicos.
-- **`getToken`** (em auth.js): Obtém um token de autenticação para os testes.
-  - O header `Authorization` é montado no formato `Bearer <token>`.
-
-## Validação com Joi
-
-Os schemas Joi são usados para validar as respostas da API. Exemplos:
-- **`productListSuccessSchema`**: Valida a lista de produtos.
-- **`productCreateSuccessSchema`**: Valida a criação de um produto.
-- **`userCreateSuccessSchema`**: Valida a criação de um usuário.
-
-## Contato
-
-- **Mantedora**: Andressa Bessa
-- **Linkedin**: [Linkedin](https://www.linkedin.com/in/andressabessaa/) 
-
+- **LinkedIn**: [Andressa Bessa](https://www.linkedin.com/in/andressabessaa/)
+- **GitHub**: [@andressabessa](https://github.com/andressabessa)
